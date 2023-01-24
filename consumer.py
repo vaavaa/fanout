@@ -16,9 +16,8 @@ def on_message(channel, method, properties, body):
     print(body)
 
 
-def run(qname=queueName, mname=exchangeName):
+def run(qname=queueName):
     qname = ''.join(str(str_item) for str_item in qname)
-    mname = ''.join(str(str_item) for str_item in mname)
     while True:
         try:
             # connect
@@ -47,8 +46,6 @@ def run(qname=queueName, mname=exchangeName):
 
 def parse_opt():
     parser = argparse.ArgumentParser()
-    parser.add_argument('--mname', nargs='*', type=str, default='testmnameQ1',
-                        help='Название очереди для этого консюмера')
     parser.add_argument('--qname', nargs='*', type=str, default='testQ1',
                         help='Название очереди для этого консюмера')
     opt = parser.parse_args()
